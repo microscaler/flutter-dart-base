@@ -24,6 +24,9 @@ RUN set -eux; mkdir -p /usr/lib /tmp/glibc $FLUTTER_PUB_CACHE \
     && apk --no-cache add bash curl git ca-certificates wget unzip \
     && rm -rf /var/lib/apt/lists/* /var/cache/apk/* /opt/flutter/bin/cache
 
+# https://security.snyk.io/vuln/SNYK-ALPINE316-EXPAT-3062883
+RUN apk upgrade expat
+
 # Install & config Flutter
 RUN set -eux; git clone -b ${VERSION} --depth 1 "${FLUTTER_URL}.git" "${FLUTTER_ROOT}" \
     && cd "${FLUTTER_ROOT}" \
