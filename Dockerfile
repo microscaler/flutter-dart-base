@@ -3,7 +3,7 @@ ARG FLUTTER_HOME="/opt/flutter"
 ARG FLUTTER_PUB_CACHE="/var/tmp/.pub_cache"
 ARG FLUTTER_URL="https://github.com/flutter/flutter"
 
-FROM alpine:3.18.5 as build
+FROM alpine:3.18.6 as build
 
 USER root
 WORKDIR /
@@ -73,7 +73,7 @@ RUN set -eux; for f in \
     done
 
 # Create new clear layer
-FROM alpine:3.18.5 as production
+FROM alpine:3.18.6 as production
 
 ARG VERSION
 ARG FLUTTER_HOME
